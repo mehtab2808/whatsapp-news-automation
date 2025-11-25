@@ -1,0 +1,44 @@
+{
+  "name": "whatsapp-community-automation",
+  "version": "1.0.0",
+  "description": "One-shot bot that fetches Indian mutual fund news from newsdata.io, summarizes with Gemini AI, and posts to WhatsApp/Telegram with MongoDB session persistence.",
+  "main": "runbot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node runbot.js",
+    "simple": "node runbot-simple.js",
+    "dev": "nodemon runbot.js",
+    "bot": "node runbot.js",
+    "test:mongo": "node mongo-setup.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.30.0",
+    "adm-zip": "^0.5.16",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.0.3",
+    "node-fetch": "^3.3.2",
+    "node-telegram-bot-api": "^0.61.0",
+    "puppeteer": "^24.31.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "whatsapp",
+    "telegram",
+    "news",
+    "mutual-funds",
+    "automation",
+    "mongodb",
+    "gemini"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
