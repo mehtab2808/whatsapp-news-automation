@@ -4,6 +4,10 @@ on:
   schedule:
     # Runs at 2:30 PM UTC = 8:00 PM IST
     - cron: '30 14 * * *'
+
+  push:
+    branches:
+      - main
   
   # Allow manual trigger
   workflow_dispatch:
