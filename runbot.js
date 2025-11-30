@@ -54,7 +54,16 @@ class WhatsAppNewsBot {
       const hasSession = await this.sessionStore.loadSessionFromMongo();
       
       if (!hasSession) {
-        console.log('ℹ️  No remote session found. You will need to scan QR code.');
+        console.log('ℹ️  No remote session found. Please run "npm run login" locally.');
+        
+        if (TELEGRAM_ENABLED) {
+          await sendTelegramNotification(
+            '⚠️ WhatsApp Session Missing!\n\n' +
+            'The bot cannot log in because no session was found.\n' +
+            'Please run `npm run login` on your local machine to authenticate.'
+          );
+        }
+        process.exit(1);
       } else {
         console.log('✅ Remote session loaded successfully.');
       }

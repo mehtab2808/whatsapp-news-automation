@@ -33,7 +33,7 @@ This guide details how to deploy the WhatsApp News Bot using **GitHub Actions** 
 
 ## Step 2: Local Authentication (One-Time Setup)
 
-You must run the bot locally once to scan the QR code and save the session to MongoDB.
+You must run the login script locally once to scan the QR code and save the session to MongoDB.
 
 1.  **Configure Environment**:
     Create a `.env` file in the project root:
@@ -51,9 +51,9 @@ You must run the bot locally once to scan the QR code and save the session to Mo
     npm install
     ```
 
-3.  **Run the Bot**:
+3.  **Run Login Script**:
     ```bash
-    npm start
+    npm run login
     ```
 
 4.  **Scan QR Code**:
@@ -61,7 +61,7 @@ You must run the bot locally once to scan the QR code and save the session to Mo
     *   Scan it with WhatsApp (Settings -> Linked Devices).
 
 5.  **Verify Success**:
-    *   Wait for the message: `✅ Session archive saved successfully to MongoDB (GridFS)`.
+    *   Wait for the message: `🎉 Login successful! Session saved.`.
     *   Once you see this, the session is safely stored in the cloud.
 
 ---
@@ -102,6 +102,20 @@ You can test the deployment immediately:
 1.  Select "Daily WhatsApp News Bot" in the Actions tab.
 2.  Click **Run workflow**.
 3.  Select `main` branch and click the green **Run workflow** button.
+
+---
+
+## Managing WhatsApp Session
+
+The bot uses a persistent session stored in MongoDB. If the session expires or you need to re-authenticate:
+
+1.  **Run the login script locally:**
+    ```bash
+    npm run login
+    ```
+2.  **Scan the QR code** with your WhatsApp (Linked Devices).
+3.  The script will save the new session to MongoDB automatically.
+4.  The bot in GitHub Actions will pick up the new session on the next run.
 
 ---
 
